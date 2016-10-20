@@ -92,5 +92,3 @@ class Recent_Referrals extends Meta_Box implements Meta_Box\Base {
 		</table>
 	<?php }
 }
-
-new Recent_Referrals;

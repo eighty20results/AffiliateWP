@@ -123,5 +123,3 @@ class Totals extends Meta_Box implements Meta_Box\Base {
 		</table>
 <?php }
 }
-
-new Totals;

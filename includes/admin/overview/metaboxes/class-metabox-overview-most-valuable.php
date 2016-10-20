@@ -99,5 +99,3 @@ class Most_Valuable_Affiliates extends Meta_Box implements Meta_Box\Base {
 		</table>
 	<?php }
 }
-
-new Most_Valuable_Affiliates;

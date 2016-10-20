@@ -100,5 +100,3 @@ class Affiliate_Registrations extends Meta_Box implements Meta_Box\Base {
         </table>
 <?php }
 }
-
-new Affiliate_Registrations;

@@ -1,4 +1,6 @@
 <?php
+use AffWP\Admin\Overview\Meta_Box;
+
 /**
  * Affiiates Overview
  *
@@ -12,14 +14,41 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// Overview Metaboxes
-include      AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-totals.php';
-include      AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-registrations.php';
-include      AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-most-valuable.php';
-include      AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-recent-referrals.php';
-include      AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-recent-referral-visits.php';
+// Overview Metaboxes.
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-totals.php';
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-registrations.php';
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-most-valuable.php';
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-recent-referrals.php';
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/metaboxes/class-metabox-overview-recent-referral-visits.php';
 
-function affwp_affiliates_dashboard() { ?>
+/**
+ * Initializes meta boxes displayed via the Overview screen.
+ *
+ * @since 1.9.4
+ */
+function affwp_init_overview_meta_boxes() {
+	new Meta_Box\Totals;
+	new Meta_Box\Affiliate_Registrations;
+	new Meta_Box\Most_Valuable_Affiliates;
+	new Meta_Box\Recent_Referrals;
+	new Meta_Box\Recent_Referral_Visits;
+
+	/**
+	 * Fires after all core Overview meta boxes have been instantiated.
+	 *
+	 * @since 1.9.4
+	 */
+	do_action( 'affwp_init_overview_meta_boxes' );
+}
+
+/**
+ * Displays the Overview screen.
+ *
+ * @since 1.0
+ */
+function affwp_affiliates_dashboard() {
+	affwp_init_overview_meta_boxes();
+	?>
 	<div class="wrap">
 
 		<h2><?php _e( 'Overview', 'affiliate-wp' ); ?></h2>
