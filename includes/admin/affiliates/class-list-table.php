@@ -166,7 +166,7 @@ class AffWP_Affiliates_Table extends List_Table {
 			'name'         => __( 'Name', 'affiliate-wp' ),
 			'affiliate_id' => __( 'Affiliate ID', 'affiliate-wp' ),
 			'username'     => __( 'Username', 'affiliate-wp' ),
-			'earnings'     => __( 'Earnings', 'affiliate-wp' ),
+			'earnings'     => __( 'Paid Earnings', 'affiliate-wp' ),
 			'rate'     	   => __( 'Rate', 'affiliate-wp' ),
 			'unpaid'       => __( 'Unpaid Referrals', 'affiliate-wp' ),
 			'referrals'    => __( 'Paid Referrals', 'affiliate-wp' ),
