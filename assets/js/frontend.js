@@ -1,5 +1,10 @@
 jQuery(document).ready( function($) {
 
+	// Remove whitespace from the campaign name.
+	$( '#affwp-campaign' ).on( 'focusout', function( event ) {
+		$( this ).val( $( this ).val().replace( /\s/g, '' ) );
+	} );
+
 	$( '#affwp-generate-ref-url' ).submit( function() {
 
 		var url                 = $( this ).find( '#affwp-url' ).val(),
