@@ -67,7 +67,7 @@ class Endpoints extends Controller {
 
 		$args = array();
 
-		$args['number']       = isset( $request['number'] )       ? $request['number'] : 0;
+		$args['number']       = isset( $request['number'] )       ? $request['number'] : 20;
 		$args['offset']       = isset( $request['offset'] )       ? $request['offset'] : 0;
 		$args['creative_id']  = isset( $request['creative_id'] )  ? $request['creative_id'] : 0;
 		$args['status']       = isset( $request['status'] )       ? $request['status'] : '';

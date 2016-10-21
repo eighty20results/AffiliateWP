@@ -75,7 +75,7 @@ class Endpoints extends Controller {
 
 		$args = array();
 
-		$args['number']       = isset( $request['number'] )       ? $request['number'] : 0;
+		$args['number']       = isset( $request['number'] )       ? $request['number'] : 20;
 		$args['offset']       = isset( $request['offset'] )       ? $request['offset'] : 0;
 		$args['exclude']      = isset( $request['exclude'] )      ? $request['exclude'] : array();
 		$args['affiliate_id'] = isset( $request['affiliate_id'] ) ? $request['affiliate_id'] : 0;
