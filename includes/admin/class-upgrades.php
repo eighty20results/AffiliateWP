@@ -80,7 +80,7 @@ class Affiliate_WP_Upgrades {
 		}
 
 		if ( version_compare( $version, '1.9.5', '<' ) ) {
-//			$this->v195_upgrade();
+			$this->v195_upgrade();
 		}
 
 		// Inconsistency between current and saved version.
