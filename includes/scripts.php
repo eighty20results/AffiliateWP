@@ -84,14 +84,14 @@ add_action( 'admin_enqueue_scripts', 'affwp_admin_scripts' );
  */
 function affwp_admin_styles() {
 
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
-	// Dashicons and our main admin CSS need to be on all pages for the menu icon
-	wp_enqueue_style( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/css/admin' . $suffix . '.css', array( 'dashicons' ), AFFILIATEWP_VERSION );
-
 	if( ! affwp_is_admin_page() ) {
 		return;
 	}
+
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+	// Dashicons and our main admin CSS need to be on all pages for the menu icon
+	wp_register_style( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/css/admin' . $suffix . '.css', array( 'dashicons' ), AFFILIATEWP_VERSION );
 
 	// jQuery UI styles are loaded on our admin pages only
 	$ui_style = ( 'classic' == get_user_option( 'admin_color' ) ) ? 'classic' : 'fresh';
