@@ -115,19 +115,19 @@ function affwp_frontend_scripts_and_styles() {
 	}
 
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	wp_register_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', AFFILIATEWP_VERSION );
+	wp_register_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', array( 'dashicons' ), AFFILIATEWP_VERSION );
 
-	if ( has_shortcode( $post->post_content, 'affiliate_area' ) || has_shortcode( $post->post_content, 'affiliate_registration' ) || apply_filters( 'affwp_force_frontend_scripts', false ) ) {
+	wp_register_script( 'affwp-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), AFFILIATEWP_VERSION );
+	wp_register_script( 'affwp-frontend', AFFILIATEWP_PLUGIN_URL . 'assets/js/frontend' . $suffix . '.js', array( 'jquery' ), AFFILIATEWP_VERSION );
 
-		wp_enqueue_script( 'affwp-frontend', AFFILIATEWP_PLUGIN_URL . 'assets/js/frontend' . $suffix . '.js', array( 'jquery' ), AFFILIATEWP_VERSION );
-		wp_localize_script( 'affwp-frontend', 'affwp_vars', array(
-			'affwp_version'         => AFFILIATEWP_VERSION,
-			'permalinks'            => get_option( 'permalink_structure' ),
-			'pretty_affiliate_urls' => affwp_is_pretty_referral_urls(),
-			'currency_sign'         => affwp_currency_filter(''),
-			'currency_pos'          => affiliate_wp()->settings->get( 'currency_position', 'before' ),
-			'invalid_url'           => __( 'Please enter a valid URL for this site', 'affiliate-wp' )
-		));
+	wp_localize_script( 'affwp-frontend', 'affwp_vars', array(
+		'affwp_version'         => AFFILIATEWP_VERSION,
+		'permalinks'            => get_option( 'permalink_structure' ),
+		'pretty_affiliate_urls' => affwp_is_pretty_referral_urls(),
+		'currency_sign'         => affwp_currency_filter(''),
+		'currency_pos'          => affiliate_wp()->settings->get( 'currency_position', 'before' ),
+		'invalid_url'           => __( 'Please enter a valid URL for this site', 'affiliate-wp' )
+	));
 
 		affwp_enqueue_style( 'affwp-forms', 'force_frontend_scripts' );
 		wp_enqueue_style( 'dashicons' );

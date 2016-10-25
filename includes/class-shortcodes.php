@@ -29,6 +29,7 @@ class Affiliate_WP_Shortcodes {
 			return;
 		}
 
+		affwp_enqueue_script( 'affwp-frontend', 'affiliate_area' );
 		affwp_enqueue_style( 'affwp-forms', 'affiliate_area' );
 
 		ob_start();
@@ -136,6 +137,7 @@ class Affiliate_WP_Shortcodes {
 			return;
 		}
 
+		affwp_enqueue_script( 'affwp-frontend', 'affiliate_registration' );
 		affwp_enqueue_style( 'affwp-forms', 'affiliate_registration' );
 
 		// redirect added to shortcode
