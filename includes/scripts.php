@@ -140,6 +140,8 @@ function affwp_frontend_scripts_and_styles() {
 		affwp_enqueue_script( 'affwp-frontend', 'force_frontend_scripts' );
 	}
 
+	add_filter( 'affwp_enqueue_script_affwp-recaptcha', 'affwp_is_recaptcha_enabled' );
+
 }
 add_action( 'wp_enqueue_scripts', 'affwp_frontend_scripts_and_styles' );
 
