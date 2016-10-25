@@ -318,9 +318,10 @@ abstract class Affiliate_WP_DB {
 		/**
 		 * Fires immediately after an item has been successfully updated.
 		 *
-		 * @param array $data Array of item data.
+		 * @param array $data   Array of item data.
+		 * @param int   $row_id Current item ID.
 		 */
-		do_action( 'affwp_post_update_' . $type, $data );
+		do_action( 'affwp_post_update_' . $type, $data, $row_id );
 
 		return true;
 	}
