@@ -129,7 +129,7 @@ function affwp_frontend_scripts_and_styles() {
 			'invalid_url'           => __( 'Please enter a valid URL for this site', 'affiliate-wp' )
 		));
 
-		wp_enqueue_style( 'affwp-forms' );
+		affwp_enqueue_style( 'affwp-forms', 'force_frontend_scripts' );
 		wp_enqueue_style( 'dashicons' );
 
 		if ( affwp_is_recaptcha_enabled() ) {
