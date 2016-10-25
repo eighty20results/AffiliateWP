@@ -128,12 +128,16 @@ function affwp_frontend_scripts_and_styles() {
 		'invalid_url'           => __( 'Please enter a valid URL for this site', 'affiliate-wp' )
 	));
 
+	/**
+	 * Filters whether to force frontend scripts and styles to be enqueued.
+	 *
+	 * @since 1.0
+	 *
+	 * @param bool $force Whether to force frontend scripts and styles. Default false.
+	 */
+	if ( true === apply_filters( 'affwp_force_frontend_scripts', false ) ) {
 		affwp_enqueue_style( 'affwp-forms', 'force_frontend_scripts' );
-		wp_enqueue_style( 'dashicons' );
-
-		if ( affwp_is_recaptcha_enabled() ) {
-			wp_enqueue_script( 'affwp-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), AFFILIATEWP_VERSION );
-		}
+		affwp_enqueue_script( 'affwp-frontend', 'force_frontend_scripts' );
 	}
 
 }
