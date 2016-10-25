@@ -87,8 +87,7 @@ function affwp_admin_styles() {
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	// Dashicons and our main admin CSS need to be on all pages for the menu icon
-	wp_enqueue_style( 'dashicons' );
-	wp_enqueue_style( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/css/admin' . $suffix . '.css', AFFILIATEWP_VERSION );
+	wp_enqueue_style( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/css/admin' . $suffix . '.css', array( 'dashicons' ), AFFILIATEWP_VERSION );
 
 	if( ! affwp_is_admin_page() ) {
 		return;
