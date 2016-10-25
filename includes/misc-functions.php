@@ -753,3 +753,55 @@ function affwp_get_current_screen() {
 	return $page_now;
 
 }
+
+/**
+ * Enables stylesheet queue manipulation by wrapping wp_enqueue_style() with added context.
+ *
+ * @since 1.9.5
+ *
+ * @param string $handle  Registered stylesheet handle.
+ * @param string $context Optional. Context under which to enqueue the stylesheet.
+ */
+function affwp_enqueue_style( $handle, $context = '' ) {
+	/**
+	 * Filters whether to enqueue the given stylesheet.
+	 *
+	 * The dynamic portion of the hook name, `$handle` refers to the stylesheet handle.
+	 *
+	 * @since 1.9.5
+	 *
+	 * @see wp_enqueue_style()
+	 *
+	 * @param bool   $enqueue Whether to enqueue the stylesheet. Default true.
+	 * @param string $context Context under which to enqueue the stylesheet.
+	 */
+	if ( true === apply_filters( "affwp_enqueue_style_{$handle}", true, $context ) ) {
+		wp_enqueue_style( $handle );
+	}
+}
+
+/**
+ * Enables script queue manipulation by wrapping wp_enqueue_style() with added context.
+ *
+ * @since 1.9.5
+ *
+ * @param string $handle  Registered script handle.
+ * @param string $context Optional. Context under which to enqueue the script.
+ */
+function affwp_enqueue_script( $handle, $context = '' ) {
+	/**
+	 * Filters whether to enqueue the given script.
+	 *
+	 * The dynamic portion of the hook name, `$handle` refers to the script handle.
+	 *
+	 * @since 1.9.5
+	 *
+	 * @see wp_enqueue_script()
+	 *
+	 * @param bool   $enqueue Whether to enqueue the script. Default true.
+	 * @param string $context Context under which to enqueue the script.
+	 */
+	if ( true === apply_filters( "affwp_enqueue_script_{$handle}", true, $context ) ) {
+		wp_enqueue_script( $handle );
+	}
+}
