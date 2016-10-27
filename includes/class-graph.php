@@ -187,34 +187,14 @@ class Affiliate_WP_Graph {
 
 		ob_start();
 
-		/**
-		 * Filters whether to output the AffiliateWP Graph JS via the enqueued jQuery flot script.
-		 *
-		 * This hook is useful for the scenario in which the 'jquery-flot' script has been
-		 * enqueued in the footer or somewhere other than the default location.
-		 *
-		 * Example:
-		 *
-		 *     add_filter( 'affwp_append_graph_js_to_flot', '__return_true' );
-		 *
-		 * @since 1.9.5
-		 *
-		 * @param bool   $append   Whether to output the Graph JS at the same time as jQuery flot.
-		 *                         Default false.
-		 * @param string $graph_id The current graph ID.
-		 */
-		if ( true === apply_filters( 'affwp_append_graph_js_to_flot', false, $this->id ) ) {
-			if ( function_exists( 'wp_add_inline_script' ) ) {
-				wp_add_inline_script( 'jquery-flot', $this->graph_js() );
-			} else {
-				// Back-compat for < WP 4.5.0.
-				wp_scripts()->add_data( 'jquery-flot', 'after', array(
-					wp_scripts()->get_data( 'jquery-flot', 'after' ),
-					$this->graph_js()
-				) );
-			}
+		if ( function_exists( 'wp_add_inline_script' ) ) {
+			wp_add_inline_script( 'jquery-flot', $this->graph_js() );
 		} else {
-			printf( '<script type="text/javascript">%s</script>', $this->graph_js() );
+			// Back-compat for < WP 4.5.0.
+			wp_scripts()->add_data( 'jquery-flot', 'after', array(
+				wp_scripts()->get_data( 'jquery-flot', 'after' ),
+				$this->graph_js()
+			) );
 		}
 
 		if ( false !== $this->get( 'show_controls' ) ) {
