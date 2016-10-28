@@ -133,12 +133,14 @@ function affwp_frontend_scripts_and_styles() {
 	 *
 	 * @since 1.0
 	 *
-	 * @param bool $force Whether to force frontend scripts and styles. Default false.
+	 * @param bool $force Whether to force frontend scripts. Default false.
 	 */
 	if ( true === apply_filters( 'affwp_force_frontend_scripts', false ) ) {
-		affwp_enqueue_style( 'affwp-forms', 'force_frontend_scripts' );
 		affwp_enqueue_script( 'affwp-frontend', 'force_frontend_scripts' );
 	}
+
+	// Always enqueue affwp-forms stylesheet.
+	affwp_enqueue_style( 'affwp-forms' );
 
 	add_filter( 'affwp_enqueue_script_affwp-recaptcha', 'affwp_is_recaptcha_enabled' );
 

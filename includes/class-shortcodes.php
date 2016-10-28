@@ -30,7 +30,6 @@ class Affiliate_WP_Shortcodes {
 		}
 
 		affwp_enqueue_script( 'affwp-frontend', 'affiliate_area' );
-		affwp_enqueue_style( 'affwp-forms', 'affiliate_area' );
 
 		ob_start();
 
@@ -102,9 +101,6 @@ class Affiliate_WP_Shortcodes {
 		}
 
 		if ( ! is_user_logged_in() ) {
-
-			affwp_enqueue_style( 'affwp-forms', 'affiliate_login' );
-
 			return affiliate_wp()->login->login_form( $redirect );
 		}
 
@@ -138,7 +134,6 @@ class Affiliate_WP_Shortcodes {
 		}
 
 		affwp_enqueue_script( 'affwp-frontend', 'affiliate_registration' );
-		affwp_enqueue_style( 'affwp-forms', 'affiliate_registration' );
 
 		// redirect added to shortcode
 		if ( $redirect ) {
